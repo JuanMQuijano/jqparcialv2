@@ -1,0 +1,7 @@
+{
+  "name": "jqparcial",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
