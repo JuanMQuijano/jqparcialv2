@@ -9,6 +9,8 @@ import { ActivatedRoute, Router, ParamMap, Params } from '@angular/router';
 
 import { Estudiante } from '../estudiante';
 import { EstudiantesService } from '../services/estudiantes.service';
+import { Materia } from '../materia';
+import { MateriasService } from '../services/materias.service';
 
 @Component({
   selector: 'app-nuevoestudiante',
@@ -16,7 +18,9 @@ import { EstudiantesService } from '../services/estudiantes.service';
   styleUrls: ['./nuevoestudiante.page.scss'],
 })
 export class NuevoestudiantePage implements OnInit {
+  id: any;
   nuevoEstudiante = {} as Estudiante;
+  id_materia: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,13 +28,18 @@ export class NuevoestudiantePage implements OnInit {
     private toastCtrl: ToastController,
     private navCtrl: NavController,
     private loadCtrl: LoadingController,
-    private estudianteService: EstudiantesService
+    private estudianteService: EstudiantesService,
+    private materiaService: MateriasService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.forEach((params: Params) => {
+      this.id_materia = params['id'];
+    });
+  }
 
   back(): void {
-    this.router.navigate(['tabs/estudiantes']);
+    this.router.navigate(['tabs/materias']);
   }
   ionViewDidEnter() {
     this.nuevoEstudiante = {} as Estudiante;
@@ -39,10 +48,11 @@ export class NuevoestudiantePage implements OnInit {
   save(nuevoEstudiante: any) {
     this.showMessage('Guardando');
     this.nuevoEstudiante.id = Number(this.nuevoEstudiante.id);
+    this.nuevoEstudiante.id_materia = Number(this.id_materia);
     this.estudianteService
       .newEstudiante(nuevoEstudiante)
       .subscribe((estudiante) => {
-        this.router.navigate(['tabs/estudiantes']);
+        this.router.navigate(['tabs/materias']);
         this.showMessage('Estudiante Registrado!');
       });
   }

@@ -28,6 +28,13 @@ export class EstudiantesService {
     return of(ESTUDIANTES.find((x) => x.id === id));
   }
 
+  getEstudiantesByMateria(
+    id_materia: number
+  ): Observable<Estudiante[] | undefined> {
+    id_materia = Number(id_materia);
+    return of(ESTUDIANTES.filter((x) => x.id_materia === id_materia));
+  }
+
   editEstudiante(estudiante: Estudiante): Observable<Estudiante | undefined> {
     let id = Number(estudiante.id);
     let index: number = ESTUDIANTES.findIndex((x) => x.id === id);

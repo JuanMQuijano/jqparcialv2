@@ -5,5 +5,6 @@ export interface Estudiante {
   parcial1: number;
   parcial2: number;
   parcial3: number;
-  definitiva: number;
+  definitiva: number;  
+  id_materia: number;
 }

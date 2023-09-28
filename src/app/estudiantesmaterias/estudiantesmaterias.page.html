@@ -6,28 +6,34 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="seleccionado">
   <ion-card *ngFor="let estudiantesItem of estudiantesMateria">
     <ion-item>
       <ion-icon slot="start" name="person-circle"></ion-icon>
       <ion-label>
-        <h2>{{estudiantesItem.nombre_estudiante}}</h2>
+        <h2>{{estudiantesItem.nombre}}</h2>
       </ion-label>
 
       <ion-buttons side="end">
-        <ion-button color="danger">
-          <ion-icon
-            slot="icon-only"
-            name="trash"
-            
-          ></ion-icon>
-        </ion-button>
         <ion-button
-          routerLink="../../editarestudiante/{{estudiantesItem.id_estudiante}}"
+          color="danger"
+          (click)="deleteEstudiante(estudiantesItem); $event.stopPropagation();"
         >
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+        <ion-button routerLink="../../editarestudiante/{{estudiantesItem.id}}">
           <ion-icon slot="icon-only" name="pencil"></ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-item>
   </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+    <ion-fab-button
+      routerLink="../../nuevoestudiante/{{seleccionado.id}}"
+      routerDirection="forward"
+    >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

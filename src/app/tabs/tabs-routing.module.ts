@@ -58,7 +58,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'nuevoestudiante',
+        path: 'nuevoestudiante/:id',
         loadChildren: () =>
           import('../nuevoestudiante/nuevoestudiante.module').then(
             (m) => m.NuevoestudiantePageModule

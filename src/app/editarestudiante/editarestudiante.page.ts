@@ -42,7 +42,7 @@ export class EditarestudiantePage implements OnInit {
 
   back(): void {
     //Regresar a la lista de Materias
-    this.router.navigate(['tabs/estudiantes']);
+    this.router.navigate(['tabs/materias']);
   }
 
   edit(estudiante: Estudiante): void {
