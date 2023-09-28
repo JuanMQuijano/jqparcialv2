@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Nueva Materia</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form (ngSubmit)="save(nuevaMateria)" #nuevoForm="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">ID: </ion-label>
+        <ion-input type="text" name="id" [(ngModel)]="nuevaMateria.id" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nombre Materia: </ion-label>
+        <ion-input type="text" name="nombre" [(ngModel)]="nuevaMateria.nombre" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Programa: </ion-label>
+        <ion-select required value="{{nuevaMateria.programa}}" [(ngModel)]="nuevaMateria.programa" name="programa">
+          <ion-select-option value="ing">Ingeniería Informática</ion-select-option>
+          <ion-select-option value="dessoft">Desarrollo de Software</ion-select-option>
+          <ion-select-option value="gesemp">Gestión Empresarial</ion-select-option>
+        </ion-select>        
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Semestre: </ion-label>
+        <ion-input type="number" name="semestre" [(ngModel)]="nuevaMateria.semestre" required min="1" max="10"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Horario: </ion-label>
+        <ion-input type="text" name="horario" [(ngModel)]="nuevaMateria.horario" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Salón: </ion-label>
+        <ion-input type="text" name="salon" [(ngModel)]="nuevaMateria.salon" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button color="primary" type="submit" *ngIf="nuevaMateria" [disabled]="!this.nuevoForm.form.valid">Guardar</ion-button>
+  </form>
+</ion-content>

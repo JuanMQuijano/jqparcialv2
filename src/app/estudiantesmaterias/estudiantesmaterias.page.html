@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title *ngIf="seleccionado"
+      >Estudiantes: {{seleccionado.nombre}}</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let estudiantesItem of estudiantesMateria">
+    <ion-item>
+      <ion-icon slot="start" name="person-circle"></ion-icon>
+      <ion-label>
+        <h2>{{estudiantesItem.nombre_estudiante}}</h2>
+      </ion-label>
+
+      <ion-buttons side="end">
+        <ion-button color="danger">
+          <ion-icon
+            slot="icon-only"
+            name="trash"
+            
+          ></ion-icon>
+        </ion-button>
+        <ion-button
+          routerLink="../../editarestudiante/{{estudiantesItem.id_estudiante}}"
+        >
+          <ion-icon slot="icon-only" name="pencil"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-card>
+</ion-content>

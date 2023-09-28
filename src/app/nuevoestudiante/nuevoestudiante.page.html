@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Nuevo Estudiante</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form (ngSubmit)="save(nuevoEstudiante)" #nuevoForm="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">ID: </ion-label>
+        <ion-input type="text" name="id" [(ngModel)]="nuevoEstudiante.id" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nombre Estudiante: </ion-label>
+        <ion-input type="text" name="nombre" [(ngModel)]="nuevoEstudiante.nombre" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Faltas: </ion-label>
+        <ion-input type="number" name="faltas" [(ngModel)]="nuevoEstudiante.faltas" required min="0" max="10"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Parcial 1: </ion-label>
+        <ion-input type="number" name="parcial1" [(ngModel)]="nuevoEstudiante.parcial1" required min="0" max="5"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Parcial 2: </ion-label>
+        <ion-input type="number" name="parcial2" [(ngModel)]="nuevoEstudiante.parcial2" required min="0" max="5"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Parcial 3: </ion-label>
+        <ion-input type="number" name="parcial3" [(ngModel)]="nuevoEstudiante.parcial3" required min="0" max="5"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Definitiva: </ion-label>
+        <ion-input type="number" name="definitiva" value="{{(nuevoEstudiante.parcial1 * 0.35) + (nuevoEstudiante.parcial2 * 0.35) + (nuevoEstudiante.parcial3 * 0.3)}}" readonly="true" required ></ion-input>
+      </ion-item>
+    
+    </ion-list>
+    <ion-button color="primary" type="submit" *ngIf="nuevoEstudiante" [disabled]="!this.nuevoForm.form.valid">Guardar</ion-button>
+  </form>
+</ion-content>

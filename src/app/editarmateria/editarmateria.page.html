@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Editar Materia</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="seleccionado">
+  <form (ngSubmit)="edit(seleccionado)" #editarForm="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">ID: </ion-label>
+        <ion-input aria-label="ID:" type="text" readonly="true" name="id" [(ngModel)]="seleccionado.id" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nombre Materia: </ion-label>
+        <ion-input type="text" name="nombre" [(ngModel)]="seleccionado.nombre" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Programa: </ion-label>
+        <ion-select required value="{{seleccionado.programa}}" [(ngModel)]="seleccionado.programa" name="programa">
+          <ion-select-option value="ing">Ingeniería Informática</ion-select-option>
+          <ion-select-option value="dessoft">Desarrollo de Software</ion-select-option>
+          <ion-select-option value="gesemp">Gestión Empresarial</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Semestre: </ion-label>
+        <ion-input type="number" name="semestre" [(ngModel)]="seleccionado.semestre" required min="1" max="10"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Horario: </ion-label>
+        <ion-input type="text" name="horario" [(ngModel)]="seleccionado.horario" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Salón: </ion-label>
+        <ion-input type="text" name="salon" [(ngModel)]="seleccionado.salon" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button color="primary" type="submit" *ngIf="seleccionado" [disabled]="!this.editarForm.form.valid">Guardar</ion-button>
+  </form>
+</ion-content>
