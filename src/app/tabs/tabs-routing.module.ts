@@ -51,7 +51,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'editarestudiante/:id',
+        path: 'editarestudiante/:id/:idm',
         loadChildren: () =>
           import('../editarestudiante/editarestudiante.module').then(
             (m) => m.EditarestudiantePageModule

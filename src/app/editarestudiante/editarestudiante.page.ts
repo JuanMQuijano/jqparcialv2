@@ -19,6 +19,7 @@ export class EditarestudiantePage implements OnInit {
   id: any;
   estudiante?: Estudiante;
   seleccionado?: Estudiante;
+  materia?: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class EditarestudiantePage implements OnInit {
   ngOnInit() {
     //Recuperamos el dato id pasado por el parametro en la URL
     this.route.params.forEach((params: Params) => {
+      this.materia = params['idm'];
       this.estudianteService
         .getEstudianteById(params['id'])
         .subscribe((seleccionado) => {
@@ -42,7 +44,7 @@ export class EditarestudiantePage implements OnInit {
 
   back(): void {
     //Regresar a la lista de Materias
-    this.router.navigate(['tabs/materias']);
+    this.router.navigate(['tabs/estudiantesmaterias/'+this.materia]);
   }
 
   edit(estudiante: Estudiante): void {

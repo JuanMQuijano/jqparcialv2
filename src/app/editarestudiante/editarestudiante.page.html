@@ -14,34 +14,80 @@
     <ion-list>
       <ion-item>
         <ion-label position="floating">ID: </ion-label>
-        <ion-input aria-label="ID:" type="text" readonly="true" name="id" [(ngModel)]="seleccionado.id" required></ion-input>
+        <ion-input
+          aria-label="ID:"
+          type="text"
+          readonly="true"
+          name="id"
+          [(ngModel)]="seleccionado.id"
+          required
+        ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Nombre Estudiante: </ion-label>
-        <ion-input type="text" name="nombre" [(ngModel)]="seleccionado.nombre" required></ion-input>
+        <ion-input
+          type="text"
+          name="nombre"
+          [(ngModel)]="seleccionado.nombre"
+          required
+        ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Faltas: </ion-label>
-        <ion-input type="number" name="faltas" [(ngModel)]="seleccionado.faltas" required min="0" max="10"></ion-input>
+        <ion-input
+          type="number"
+          name="faltas"
+          [(ngModel)]="seleccionado.faltas"
+          min="0"
+          max="10"
+        ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Parcial 1: </ion-label>
-        <ion-input type="number" name="parcial1" [(ngModel)]="seleccionado.parcial1" required min="0" max="5"></ion-input>
+        <ion-input
+          type="number"
+          name="parcial1"
+          [(ngModel)]="seleccionado.parcial1"
+          min="0"
+          max="5"
+        ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Parcial 2: </ion-label>
-        <ion-input type="number" name="parcial2" [(ngModel)]="seleccionado.parcial2" required min="0" max="5"></ion-input>
+        <ion-input
+          type="number"
+          name="parcial2"
+          [(ngModel)]="seleccionado.parcial2"
+          min="0"
+          max="5"
+        ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Parcial 3: </ion-label>
-        <ion-input type="number" name="parcial3" [(ngModel)]="seleccionado.parcial3" required min="0" max="5"></ion-input>
+        <ion-input
+          type="number"
+          name="parcial3"
+          [(ngModel)]="seleccionado.parcial3"
+          min="0"
+          max="5"
+        ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Definitiva: </ion-label>
-        <ion-input type="number" name="definitiva" value="{{(seleccionado.parcial1 * 0.35) + (seleccionado.parcial2 * 0.35) + (seleccionado.parcial3 * 0.3)}}" readonly="true" required ></ion-input>
+        <ion-input
+          type="number"
+          name="definitiva"
+          value="{{(seleccionado.parcial1 * 0.35) + (seleccionado.parcial2 * 0.35) + (seleccionado.parcial3 * 0.3)}}"
+          readonly="true"
+        ></ion-input>
       </ion-item>
-    
     </ion-list>
-    <ion-button color="primary" type="submit" *ngIf="seleccionado" [disabled]="!this.editarForm.form.valid">Guardar</ion-button>
+    <ion-button
+      color="primary"
+      type="submit"
+      *ngIf="seleccionado"
+      [disabled]="!this.editarForm.form.valid"
+      >Guardar</ion-button
+    >
   </form>
 </ion-content>

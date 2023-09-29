@@ -26,6 +26,7 @@ export class MateriasPage implements OnInit {
 
   ngOnInit() {
     this.getMaterias();
+    console.log(this.mismaterias)
   }
 
   async deleteMateria(materia: Materia) {

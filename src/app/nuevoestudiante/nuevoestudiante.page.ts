@@ -20,7 +20,7 @@ import { MateriasService } from '../services/materias.service';
 export class NuevoestudiantePage implements OnInit {
   id: any;
   nuevoEstudiante = {} as Estudiante;
-  id_materia: any;
+  id_materia?: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,6 +36,7 @@ export class NuevoestudiantePage implements OnInit {
     this.route.params.forEach((params: Params) => {
       this.id_materia = params['id'];
     });
+    console.log(this.id_materia);
   }
 
   back(): void {
@@ -52,7 +53,7 @@ export class NuevoestudiantePage implements OnInit {
     this.estudianteService
       .newEstudiante(nuevoEstudiante)
       .subscribe((estudiante) => {
-        this.router.navigate(['tabs/materias']);
+        this.router.navigate(['tabs/estudiantesmaterias/' + this.id_materia]);
         this.showMessage('Estudiante Registrado!');
       });
   }
